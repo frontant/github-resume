@@ -15,7 +15,7 @@ class ReactApp extends React.Component{
         // render page with the form
         if(!this.props.username){
             return (
-                <PageFrame title="Javascript Challenge “Github Resumé” 1.1">
+                <PageFrame title="Github Resumé">
                     <Form />
                 </PageFrame>
             );

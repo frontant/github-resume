@@ -72,7 +72,7 @@
 <section>
     <header>
         <h1>
-            Javascript Challenge “Github Resumé” 1.1
+            Github Resumé
         </h1>
     </header>
 
