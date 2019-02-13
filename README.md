@@ -1,3 +1,9 @@
+# Github Resumé
+
+A single page application displaying github user information (based on react-redux).
+
+### [Demo](https://frontant.github.io/github-resume-demo/)
+
 ### How to build the project
 
 ```shell
