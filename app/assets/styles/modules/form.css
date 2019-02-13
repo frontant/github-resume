@@ -1,0 +1,39 @@
+.form{
+    display: inline-block;
+
+    & fieldset{
+        border: none;
+    }
+    
+    &__caption{
+        display: block;
+        padding: 1em 0 1.2em 0;
+    }
+
+    &__error-message{
+        display: block;
+        color: $red;
+        margin-bottom: 10px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    &__body{
+        display: inline-block;
+        width: 100%;
+
+        @mixin atSmall {
+            width: 400px;
+        }
+
+        &__input-account{
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        &__submit-button{
+            width: 100%;
+        }
+    }
+}

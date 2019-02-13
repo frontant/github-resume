@@ -1,0 +1,16 @@
+.resume{
+    margin-top: 10px;
+
+    &__repository{
+        margin-top: 20px;
+
+        &__languages{
+            margin-top: 0.4em;
+            text-transform: uppercase;
+
+            @mixin atMedium {
+                font-size: 1.2em;
+            }
+        }
+    }
+}

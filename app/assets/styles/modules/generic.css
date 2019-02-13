@@ -1,0 +1,13 @@
+.generic{
+    &--text-align-center{
+        text-align: center;
+    }
+
+    &--color-red{
+        color: $red;
+    }
+
+    &--margin-t-3em{
+        margin-top: 3em;
+    }
+}

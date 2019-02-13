@@ -1,0 +1,51 @@
+.layout{
+    display: inline-block;
+    background-color: $lightGrey;
+    padding: 40px 0px;
+    margin: 20px 10px;
+    text-align: center;
+
+    @mixin atSmall {
+        margin: 50px 10px;
+    }
+
+    @mixin atLarge {
+        max-width: 1000px;
+    }
+
+    &__header{
+        border-bottom: 1px solid $grey;
+        width: calc(100% - 80px);
+        padding-bottom: 35px;
+        margin: 0 40px;
+
+        @mixin atSmall {
+            width: calc(100% - 80px);
+            margin: 0 40px;
+        }
+
+        @mixin atMedium {
+            width: calc(100% - 160px);
+            margin: 0 80px;
+        }
+
+        @mixin atLarge {
+            width: calc(100% - 320px);
+            margin: 0 160px;
+        }
+    }
+
+    &__body{
+        padding: 50px 20px;
+    }
+
+    &__footer{
+        display: inline-block;
+        font-size: 0.8em;
+        padding: 0 40px;
+
+        @mixin atSmall {
+            max-width: 30em;
+        }
+    }
+}

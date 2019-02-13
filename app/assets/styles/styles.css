@@ -1,0 +1,9 @@
+@import "./base/variables.css";
+@import "./base/mixins.css";
+@import "./base/globals.css";
+
+@import "./modules/generic.css";
+@import "./modules/layout.css";
+
+@import "./modules/form.css";
+@import "./modules/resume.css";
