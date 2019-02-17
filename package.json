@@ -2,6 +2,9 @@
   "name": "github-resume",
   "version": "1.0.0",
   "author": "frontant",
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
     "jquery": "3.3.1"
   },
@@ -29,12 +32,14 @@
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
+    "jest": "^24.1.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "uglifyjs-webpack-plugin": "^2.0.1"
+    "uglifyjs-webpack-plugin": "^2.0.1",
+    "deep-freeze": "0.0.1"
   }
 }
