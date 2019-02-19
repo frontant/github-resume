@@ -12,18 +12,56 @@ const fetchRepositoriesFailed = errorMessage => ({
     errorMessage
 });
 
-export const fetchRepositories = (username, maxReposCount = 5) => {
-    return dispatch => {
-        dispatch({ type:  ActionType.FETCH_REPOSITORIES });
+const cacheRepositories = (username, data) => ({
+    type: ActionType.CACHE_REPOSITORIES,
+    username,
+    data
+});
 
-        return new Promise((resolve, reject) => {
-            let url = `${Globals.githubApiUrl}/users/${username}/repos?per_page=${maxReposCount}&page=1`
-            ajaxRequest(url, resolve, reject);
-        })
-        .then(response => dispatch(receiveRepositories(
-            response.slice(0, maxReposCount),
-            maxReposCount)))
-        .catch(errMsg => dispatch(fetchRepositoriesFailed(errMsg)));
+const fetchFromCacheRepositories = data => ({
+    type: ActionType.FETCH_FROM_CACHE_REPOSITORIES,
+    data
+});
+
+const responseToData = response => response.map(item => ({
+    id: item.id,
+    name: item.name,
+    description: item.description,
+    website: item.html_url
+}));
+
+export const fetchRepositories = (username, maxReposCount = 5) => {
+    return (dispatch, getState) => {
+        let state = getState();
+        let cachedData = state.cache.find(item =>
+            item.userData &&
+            item.userData.data.username == username &&
+            item.repositories);
+
+        // load data from the cache if possible
+        if(cachedData){
+            return dispatch(fetchFromCacheRepositories(cachedData.repositories.data));
+        }
+
+        // otherwise fetch data from the server
+        else{
+            dispatch({ type:  ActionType.FETCH_REPOSITORIES });
+
+            return new Promise((resolve, reject) => {
+                let url = `${Globals.githubApiUrl}/users/${username}/repos?per_page=${maxReposCount}&page=1`
+                ajaxRequest(url, resolve, reject);
+            })
+            .then(response => {
+                let responsePart = response.slice(0, maxReposCount);
+                let data = responseToData(responsePart);
+    
+                return Promise.all([
+                    dispatch(receiveRepositories(data)),
+                    dispatch(cacheRepositories(username, data))
+                ]);
+            })
+            .catch(errMsg => dispatch(fetchRepositoriesFailed(errMsg)));
+        }
     };
 }
 

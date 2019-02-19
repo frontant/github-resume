@@ -40,7 +40,7 @@ const mapStateToProps = (state, ownProps) => {
         name: repository.name,
         description: repository.description,
         website: repository.website,
-        languages: repository.languages
+        languages: (repository.languages ? repository.languages : { data: [] })
     };
 };
 

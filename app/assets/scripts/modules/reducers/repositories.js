@@ -51,21 +51,12 @@ const repositories = (state = createBlankState(), action) => {
                 errorMessage: null,
                 data: []
             };
+        case ActionType.FETCH_FROM_CACHE_REPOSITORIES:
         case ActionType.RECEIVE_REPOSITORIES:
             return {
                 isFetching: false,
                 errorMessage: null,
-                data: action.data.map(repositoryData => ({
-                    id: repositoryData.id,
-                    name: repositoryData.name,
-                    description: repositoryData.description,
-                    website: repositoryData.html_url,
-                    languages: {
-                        isFetching: false,
-                        errorMessage: null,
-                        data: []
-                    }
-                }))
+                data: action.data
             };
         case ActionType.FETCH_REPOSITORIES_FAILED:
             return {
