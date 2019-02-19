@@ -31,7 +31,9 @@ const responseToUserData = response => ({
 export const fetchUserData = username => {
     return (dispatch, getState) => {
         let state = getState();
-        let cachedData = state.cache.find(item => item.userData.data.username == username);
+        let cachedData = state.cache.find(item =>
+            item.userData &&
+            item.userData.data.username == username);
 
         // load data from the cache if possible
         if(cachedData){
