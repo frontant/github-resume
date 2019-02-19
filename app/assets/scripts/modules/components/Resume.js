@@ -25,27 +25,26 @@ class Resume extends React.Component{
     }
 
     render(){
-        if(this.props.errorMsg){
-            // show error message
-            return (
-                <div className="generic--color-red">
-                    {this.props.errorMsg}
-                </div>
-            );
-        }else{
-            // show the resume
-            return (
-                <div>
-                    <h3>Repositories</h3>
-
-                    <Repositories />
-                        
-                    <a  href="#"
-                        className="button generic--margin-t-3em"
-                        onClick={this.handleBackButtonClick}>back</a>
-                </div>
-            );
-        }
+        return (
+            <div>
+                {this.props.errorMsg ? (
+                    // show error message
+                    <div className="generic--color-red">
+                        {this.props.errorMsg}
+                    </div>
+                ) : (
+                    // show the resume
+                    <div>
+                        <h3>Repositories</h3>
+                        <Repositories />
+                    </div>
+                )}
+                    
+                <a  href="#"
+                    className="button generic--margin-t-3em"
+                    onClick={this.handleBackButtonClick}>back</a>
+            </div>
+        );
     }
 }
 
