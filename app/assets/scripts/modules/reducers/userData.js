@@ -6,12 +6,6 @@ const createBlankState = () => ({
     data: {}
 });
 
-const dataToUserData = data => ({
-    username: data.login,
-    name: data.name,
-    description: data.bio
-})
-
 const userData = (state = createBlankState(), action) => {
     switch(action.type){
         case ActionType.FETCH_USER_DATA:
@@ -20,11 +14,12 @@ const userData = (state = createBlankState(), action) => {
                 errorMessage: null,
                 data: {}
             };
+        case ActionType.FETCH_FROM_CACHE_USER_DATA:
         case ActionType.RECEIVE_USER_DATA:
             return {
                 isFetching: false,
                 errorMessage: null,
-                data: dataToUserData(action.data)
+                data: action.data
             };
         case ActionType.FETCH_USER_DATA_FAILED:
             return {

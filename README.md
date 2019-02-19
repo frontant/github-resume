@@ -68,7 +68,8 @@ A single page application displaying github user information (based on react-red
                 }
             }
         ]
-    }
+    },
+    cache: []
 }
 ```
 
