@@ -42,6 +42,7 @@ A single page application displaying github user information (based on react-red
         }
     },
     repositories: {
+        username: "friend",
         isFetching: false,
         errorMessage: null,
         data: [

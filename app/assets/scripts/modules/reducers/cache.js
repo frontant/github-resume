@@ -32,6 +32,7 @@ const updateRepositories = (state, username, repositories) => {
     let ret = {
         userData: item.userData,
         repositories: {
+            username,
             data: repositories
         }
     }

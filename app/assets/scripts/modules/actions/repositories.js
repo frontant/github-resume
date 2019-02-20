@@ -2,13 +2,15 @@ import ActionType from "./ActionType";
 import Globals from "../Globals";
 import ajaxRequest from "../ajaxRequest";
 
-const receiveRepositories = data => ({
+const receiveRepositories = (username, data) => ({
     type: ActionType.RECEIVE_REPOSITORIES,
+    username,
     data
 });
 
-const fetchRepositoriesFailed = errorMessage => ({
+const fetchRepositoriesFailed = (username, errorMessage) => ({
     type: ActionType.FETCH_REPOSITORIES_FAILED,
+    username,
     errorMessage
 });
 
@@ -18,8 +20,9 @@ const cacheRepositories = (username, data) => ({
     data
 });
 
-const fetchFromCacheRepositories = data => ({
+const fetchFromCacheRepositories = (username, data) => ({
     type: ActionType.FETCH_FROM_CACHE_REPOSITORIES,
+    username,
     data
 });
 
@@ -34,13 +37,12 @@ export const fetchRepositories = (username, maxReposCount = 5) => {
     return (dispatch, getState) => {
         let state = getState();
         let cachedData = state.cache.find(item =>
-            item.userData &&
-            item.userData.data.username == username &&
-            item.repositories);
+            item.repositories &&
+            item.repositories.username == username);
 
         // load data from the cache if possible
         if(cachedData){
-            return dispatch(fetchFromCacheRepositories(cachedData.repositories.data));
+            return dispatch(fetchFromCacheRepositories(username, cachedData.repositories.data));
         }
 
         // otherwise fetch data from the server
@@ -56,11 +58,11 @@ export const fetchRepositories = (username, maxReposCount = 5) => {
                 let data = responseToData(responsePart);
     
                 return Promise.all([
-                    dispatch(receiveRepositories(data)),
+                    dispatch(receiveRepositories(username, data)),
                     dispatch(cacheRepositories(username, data))
                 ]);
             })
-            .catch(errMsg => dispatch(fetchRepositoriesFailed(errMsg)));
+            .catch(errMsg => dispatch(fetchRepositoriesFailed(username, errMsg)));
         }
     };
 }
