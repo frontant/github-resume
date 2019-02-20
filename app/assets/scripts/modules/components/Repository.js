@@ -35,12 +35,13 @@ class Repository extends React.Component{
 
 const mapStateToProps = (state, ownProps) => {
     let repository = state.repositories.data.find(repos => repos.id == ownProps.id);
+    let languages = state.languages.find(item => item.repositoryId == repository.id);
 
     return {
         name: repository.name,
         description: repository.description,
         website: repository.website,
-        languages: (repository.languages ? repository.languages : { data: [] })
+        languages: (languages ? languages : { data: [] })
     };
 };
 

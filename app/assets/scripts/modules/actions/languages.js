@@ -25,7 +25,10 @@ export const fetchLanguages = repositoryId => {
             let url = `${Globals.githubApiUrl}/repositories/${repositoryId}/languages`;
             ajaxRequest(url, resolve, reject);
         })
-        .then(response => dispatch(receiveLanguages(repositoryId, response)))
-        .catch(errorMsg => dispatch(fetchLanguagesFailed(repositoryId, errorMsg)));
+        .then(response => {
+            let data = Object.keys(response);
+            return dispatch(receiveLanguages(repositoryId, data));
+        })
+        .catch(errorMessage => dispatch(fetchLanguagesFailed(repositoryId, errorMessage)));
     }
 }

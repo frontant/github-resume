@@ -49,26 +49,30 @@ A single page application displaying github user information (based on react-red
                 id: "kh123k",
                 name: "html5-template",
                 description: "html5 template",
-                website: "https://friend.github.com/html5-template",
-                languages: {
-                    isFetching: false,
-                    errorMessage: null,
-                    data: [ "CSS", "Html", "Javascript" ]
-                }
+                website: "https://friend.github.com/html5-template"
             },
             {
                 id: "sdfr3sy",
                 name: "wordpress-template",
                 description: "wordpress template",
-                website: "https://friend.github.com/wordpress-template",
-                languages: {
-                    isFetching: false,
-                    errorMessage: null,
-                    data: [ "CSS", "Javascript", "PHP" ]
-                }
+                website: "https://friend.github.com/wordpress-template"
             }
         ]
     },
+    languages:[
+        {
+            repositoryId: "kh123k",
+            isFetching: false,
+            errorMessage: null,
+            data: [ "CSS", "Html", "Javascript" ]
+        },
+        {
+            repositoryId: "sdfr3sy",
+            isFetching: false,
+            errorMessage: null,
+            data: [ "CSS", "Javascript", "PHP" ]
+        }
+    ],
     cache: []
 }
 ```
