@@ -42,10 +42,12 @@ export const fetchRepositories = (username, maxReposCount = 5) => {
 
         // load data from the cache if possible
         if(cachedData){
-            return dispatch(fetchFromCacheRepositories(username, cachedData.repositories.data));
+            return dispatch(fetchFromCacheRepositories(
+                cachedData.repositories.username,
+                cachedData.repositories.data));
         }
 
-        // otherwise fetch data from the server
+        // otherwise fetch the data from the server
         else{
             dispatch({ type:  ActionType.FETCH_REPOSITORIES });
 

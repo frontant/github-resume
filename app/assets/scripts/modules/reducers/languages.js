@@ -23,6 +23,7 @@ const languages = (state = [], action) => {
                 errorMessage: null,
                 data: []
             });
+        case ActionType.FETCH_FROM_CACHE_REPOSITORY_LANGUAGES:
         case ActionType.RECEIVE_REPOSITORY_LANGUAGES:
             return updateLanguages(state, {
                 repositoryId: action.repositoryId,
