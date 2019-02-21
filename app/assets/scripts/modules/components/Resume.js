@@ -2,7 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 
 import Repositories from "./Repositories";
-import { fetchRepositories, resetUserData, resetRepositories } from "../actions";
+import {
+    fetchRepositories,
+    resetUserData,
+    resetRepositories,
+    resetLanguages
+} from "../actions";
 
 class Resume extends React.Component{
     constructor(props){
@@ -20,6 +25,7 @@ class Resume extends React.Component{
     handleBackButtonClick(event){
         this.props.resetUserData();
         this.props.resetRepositories();
+        this.props.resetLanguages();
 
         event.preventDefault();
     }
@@ -58,7 +64,8 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = dispatch => ({
     fetchRepositories: username => dispatch(fetchRepositories(username)),
     resetUserData: () => dispatch(resetUserData()),
-    resetRepositories: () => dispatch(resetRepositories())
+    resetRepositories: () => dispatch(resetRepositories()),
+    resetLanguages: () => dispatch(resetLanguages())
 });
 
 export default connect(

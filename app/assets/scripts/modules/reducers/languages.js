@@ -38,6 +38,8 @@ const languages = (state = [], action) => {
                 errorMessage: action.errorMessage,
                 data: []
             });
+        case ActionType.RESET_REPOSITORY_LANGUAGES:
+            return [];
         default:
             return state;
     }

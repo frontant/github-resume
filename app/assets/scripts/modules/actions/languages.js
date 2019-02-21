@@ -71,3 +71,7 @@ export const fetchLanguages = repositoryId => {
         }
     }
 }
+
+export const resetLanguages = () => ({
+    type: ActionType.RESET_REPOSITORY_LANGUAGES
+});
