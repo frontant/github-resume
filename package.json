@@ -24,7 +24,7 @@
     "gulp-hash": "^4.2.2",
     "gulp-hash-references": "^3.0.0",
     "gulp-html-minifier": "^0.1.8",
-    "webpack": "^4.25.1",
+    "webpack": "^5.94.0",
     "gulp-modernizr": "^3.0.0",
     "gulp-watch": "^5.0.1",
     "browser-sync": "^2.26.3",
